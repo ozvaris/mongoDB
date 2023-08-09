@@ -12,7 +12,17 @@ RUN apt-get update && \
 # Başlangıç scriptini konteynera kopyalayın
 COPY init-mongo.js /docker-entrypoint-initdb.d/
 
+# Sertifikaları konteynera kopyalayın
+COPY ./cert/mongodb.pem /etc/ssl
+COPY ./cert/mongodb-cert.crt /etc/ssl
+
+# Yapılandırma dosyasını konteynıra kopyala
+COPY mongod.conf /etc/mongod.conf
+
 # Gerekli yetkilendirmeleri verin
 RUN chmod 755 /docker-entrypoint-initdb.d/init-mongo.js
 
+RUN echo "********************************************************"
 
+# MongoDB'yi özel yapılandırma ile başlat
+CMD ["mongod", "--config", "/etc/mongod.conf"]
