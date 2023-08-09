@@ -1,5 +1,6 @@
 // init-mongo.js
 
+// SCRAM user
 db.getSiblingDB('admin').createUser(
   {
     user: "myUserAdmin",
@@ -22,3 +23,16 @@ db.items.insert([
 ]);
 
 print("Test data inserted.");
+
+db.getSiblingDB("$external").runCommand(
+  {
+    createUser: "/CN=x509user/OU=myOrgUnit/O=myOrg/L=myLocality/ST=myState/C=US",
+    roles: [
+         { role: "readWrite", db: "test" },
+         { role: "userAdminAnyDatabase", db: "admin" }
+    ],
+    writeConcern: { w: "majority" , wtimeout: 5000 }
+  }
+)
+
+
