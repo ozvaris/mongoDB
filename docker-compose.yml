@@ -1,6 +1,6 @@
 version: "3"
 services:
-  mongo:
+  primary:
     build: ./mongo
     restart: always
     environment:
@@ -10,7 +10,9 @@ services:
       - ./mongodata:/data/db
       - ./mongo/crt:/crt
     ports:
-      - 27017:27017  
+      - 27017:27017
+    networks:
+      - mongoReplica
 
   # mongo-express:
   #   build: ./mongo-express
@@ -24,3 +26,7 @@ services:
 
 volumes:
   mongodata:
+
+networks:
+  mongoReplica:
+    driver: bridge

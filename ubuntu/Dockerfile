@@ -24,10 +24,13 @@ WORKDIR /app
 RUN mkdir /app/crt
 
 # Mark the directory as a volume
-VOLUME ["/app/crt"]
+# VOLUME ["/crt:/app/crt"]
 
 # Set the working directory
 WORKDIR /app/crt
+
+# Sets three DNS names as SANs (primary, secondary, third)
+COPY ./openssl.cnf /
 
 # Command to run when the Docker container starts
 CMD ["/bin/bash"]
