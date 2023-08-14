@@ -8,7 +8,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - ./mongodata:/data/db
-      - ./mongo/cert:/cert
+      - ./mongo/crt:/crt
     ports:
       - 27017:27017  
 

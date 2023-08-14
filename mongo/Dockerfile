@@ -12,9 +12,9 @@ RUN apt-get update && \
 # Başlangıç scriptini konteynera kopyalayın
 COPY init-mongo.js /docker-entrypoint-initdb.d/
 
-# Sertifikaları konteynera kopyalayın
-COPY ./cert/mongodb.pem /etc/ssl
-COPY ./cert/mongodb-cert.crt /etc/ssl
+COPY ./crt/primary.pem /etc/ssl
+COPY ./crt/rootCA.pem /etc/ssl
+COPY ./crt/cluster.pem /etc/ssl
 
 # Yapılandırma dosyasını konteynıra kopyala
 COPY mongod.conf /etc/mongod.conf
