@@ -1,5 +1,13 @@
 /mongodata
 /mongodata1
+/mongodata2
+
 /mongo/crt
+/mongo1/crt
+/mongo2/crt
+
+/mongo/scripts/repl_status.txt
+
 /ubuntu/crt
+
 
