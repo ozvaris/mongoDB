@@ -6,7 +6,10 @@
 /mongo1/crt
 /mongo2/crt
 
-/mongo/scripts/repl_status.txt
+/mongo/scripts/last_repl_status.txt
+/mongo/scripts/repl_status_log.txt
+/mongo/scripts/repl_status_log1.txt
+/mongo/scripts/repl_status_log2.txt
 
 /ubuntu/crt
 

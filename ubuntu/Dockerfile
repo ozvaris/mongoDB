@@ -20,17 +20,8 @@ RUN apt-get update && \
 # Set the working directory
 WORKDIR /app
 
-# Create a directory to be used as a volume
-RUN mkdir /app/crt
-
 # Mark the directory as a volume
 # VOLUME ["/crt:/app/crt"]
-
-# Set the working directory
-WORKDIR /app/crt
-
-# Sets three DNS names as SANs (primary, secondary, third)
-COPY ./openssl.cnf /
 
 # Command to run when the Docker container starts
 CMD ["/bin/bash"]

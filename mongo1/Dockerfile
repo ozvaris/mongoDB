@@ -19,6 +19,7 @@ COPY ./crt/cluster.pem /etc/ssl
 # Yapılandırma dosyasını konteynıra kopyala
 COPY mongod.conf /etc/mongod.conf
 
+
 # Gerekli yetkilendirmeleri verin
 # RUN chmod 755 /docker-entrypoint-initdb.d/init-mongo.js
 

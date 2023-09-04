@@ -28,20 +28,20 @@ services:
       - 27018:27017
     networks:
       - mongoReplica
-  # third:
-  #   build: ./mongo2
-  #   restart: always
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: root
-  #     MONGO_INITDB_ROOT_PASSWORD: example
-  #   volumes:
-  #     - ./mongodata2:/data/db
-  #     - ./mongo/crt:/crt
-  #     - ./mongo/scripts:/scripts
-  #   ports:
-  #     - 27019:27017
-  #   networks:
-  #     - mongoReplica
+  third:
+    build: ./mongo2
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./mongodata2:/data/db
+      - ./mongo/crt:/crt
+      - ./mongo/scripts:/scripts
+    ports:
+      - 27019:27017
+    networks:
+      - mongoReplica
 
   # mongo-express:
   #   build: ./mongo-express

@@ -11,5 +11,5 @@ subjectAltName = @alt_names
 DNS.1   = primary
 DNS.2   = secondary
 DNS.3   = third
-DNS.3   = localhost
+DNS.4   = localhost
 
