@@ -26,9 +26,9 @@ print("Test data inserted.");
 
 db.getSiblingDB("$external").runCommand(
   {
-    createUser: "/CN=x509user/OU=myOrgUnit/O=myOrg/L=myLocality/ST=myState/C=US",
+    createUser: "/C=TR/ST=Istanbul/L=Istanbul/OU=MyMongoDBCluster,O=MyMongoDBCompany/CN=localhost",
     roles: [
-         { role: "readWrite", db: "test" },
+         { role: "readWrite", db: "items" },
          { role: "userAdminAnyDatabase", db: "admin" }
     ],
     writeConcern: { w: "majority" , wtimeout: 5000 }

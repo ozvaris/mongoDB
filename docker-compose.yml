@@ -1,6 +1,6 @@
 version: "3"
 services:
-  mongo:
+  primary:
     build: ./mongo
     restart: always
     environment:
@@ -8,9 +8,40 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - ./mongodata:/data/db
-      - ./mongo/cert:/cert
+      - ./mongo/crt:/crt
+      - ./mongo/scripts:/scripts
     ports:
-      - 27017:27017  
+      - 27017:27017
+    networks:
+      - mongoReplica
+  secondary:
+    build: ./mongo1
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./mongodata1:/data/db
+      - ./mongo/crt:/crt
+      - ./mongo/scripts:/scripts
+    ports:
+      - 27018:27017
+    networks:
+      - mongoReplica
+  third:
+    build: ./mongo2
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./mongodata2:/data/db
+      - ./mongo/crt:/crt
+      - ./mongo/scripts:/scripts
+    ports:
+      - 27019:27017
+    networks:
+      - mongoReplica
 
   # mongo-express:
   #   build: ./mongo-express
@@ -24,3 +55,7 @@ services:
 
 volumes:
   mongodata:
+
+networks:
+  mongoReplica:
+    driver: bridge
